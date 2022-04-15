@@ -1,0 +1,4 @@
+name = 'hallway'
+version = '1.0'
+author = 'izzy'
+description = 'A narrow passage between small spawns surrounded by colorful blocks that rise to the ceiling.'

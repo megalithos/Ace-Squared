@@ -1,0 +1,4 @@
+name = 'Island Babel'
+version = '1.0'
+author = 'izzy, ei8htx'
+description = 'Island modified for Tower of Babel'

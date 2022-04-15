@@ -1,0 +1,5 @@
+name = 'Bocage'
+version = '1.0'
+author = 'Influx'
+description = ('The spiritual successor to Normandie,' 
+'the teams fight over a small Norman-themed town.')

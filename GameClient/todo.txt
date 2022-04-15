@@ -1,0 +1,29 @@
+[ ] add some weapon class that holds weapon data, name, clip size, totalammo etc etc.
+[ ] limit debug gun firerate, and add reloading
+- also when other players join server, send them the gun player is using
+///////////////////////////////////////////////////
+////research and maybe implement? (not in order)///
+///////////////////////////////////////////////////
+[ ] some way to change place block color
+[ ] server side anticheat
+
+///////////////////////////////////////////////////
+/////////// later /////////////////////////////////
+///////////////////////////////////////////////////
+[ ] add running/moving animation
+[ ] chat for players
+[ ] maybe console, or use chat as a method for uploading console commands
+[ ] server tells client he has some map and client tells if he has it,
+    if client doesn't have it send it to him.
+[ ] fan suggestion: medic class,tank class (more hp,defense and less dmg),builder class(large pre-made constructions)
+
+[ ] fix when you run towards some block and place block in front of you it goes inside the blocks and can walk there
+ also happens when making tower and falling through
+[ ] fix stuttering when !localplayer is long standing still and he starts to stutter
+[ ] some balance to player shooting that the guy who has fastest internet does not necessarily win a firefight
+[ ] better interpolation for over network, (maybe with rb.moveposition and rb interpolate options?)
+[ ] add prone position
+[ ] fix jumping under block letting see through walls
+- better respawning
+- settings where you can customize hotkeys
+- player 3 blocks high or smth when standing and 2 blocks when crouching

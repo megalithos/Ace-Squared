@@ -1,0 +1,3 @@
+name = 'binladencompoundv7'
+version = '7.0'
+author = 'Noire'

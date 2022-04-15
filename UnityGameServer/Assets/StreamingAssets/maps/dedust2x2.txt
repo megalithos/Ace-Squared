@@ -1,0 +1,53 @@
+
+
+from pyspades.constants import *
+import random
+
+def get_entity_location(team, entity_id):
+
+    if entity_id == BLUE_FLAG:
+        x = random.randrange(255, 256)
+        y = random.randrange(255, 256)
+        z = 0
+        return (x,y,z)
+
+    if entity_id == BLUE_BASE:
+        x = random.randrange(127, 128)
+        y = random.randrange(245, 246)
+        z = 60
+        return (x, y, z)
+
+    if entity_id == GREEN_FLAG:
+        x = random.randrange(255, 256)
+        y = random.randrange(255, 256)
+        z = 0
+        return (x, y, z)
+
+    if entity_id == GREEN_BASE:
+        x = random.randrange(383, 384)
+        y = random.randrange(265, 266)
+        z = 60
+        return (x, y, z)
+
+def get_spawn_location(connection):
+
+    if connection.team is connection.protocol.blue_team:
+        x = random.randrange(130, 150)
+        y = random.randrange(246, 260)
+        z = connection.protocol.map.get_z(x,y) - 2
+        return (x, y, z)
+
+    if connection.team is connection.protocol.green_team:
+        x = random.randrange(360, 380)
+        y = random.randrange(256, 270)
+        z = connection.protocol.map.get_z(x,y) - 2
+        return (x, y, z)
+
+
+name = 'de_dust2 x2'
+version = '1.0'
+author = 'Simox + Danke'
+extensions = { 
+'babel' : True, 
+'boundary_damage' : {'left' : 71, 'right' : 425, 'top' : 55, 'bottom' : 385, 'damage': 5}
+}

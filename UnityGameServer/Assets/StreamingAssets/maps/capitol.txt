@@ -1,0 +1,4 @@
+name = 'Capitol'
+author = 'Ki11aWi11'
+version = '1.1'
+description = 'Prepare for intense urban warfare as you try to occupty the Capitol!'
