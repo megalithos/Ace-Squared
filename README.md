@@ -29,12 +29,12 @@ Here is a demo video:
 https://youtu.be/pufQu9REhOo
 
 # Get started quickly
-Resolve any errors (you might get error that newtonsoft is not referenced)
-Make sure URP is installed via package manager
-Open scenes in unitygameserver & gameclient
-Build & run both
-On client type "|127.0.0.1" to username field in server browser
-Click connect on client
+- Resolve any errors (you might get error that newtonsoft is not referenced)
+- Make sure URP is installed via package manager
+- Open scenes in unitygameserver & gameclient
+- Build & run both
+- On client type "|127.0.0.1" to username field in server browser
+- Click connect on client
 
 # Contact
 You can contact me via email islaitala@gmail.com or discord Akseli#9877
