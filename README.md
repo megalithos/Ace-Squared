@@ -7,7 +7,8 @@ See LICENSE files (files in root directory starting with LICENSE prefix).
 
 In project there is the client code and dedicated server code. This project was made with older version of Unity but if you know C# you should be able to setup it pretty quickly. There is some not clean code in the repository, I might clean it later.
 
-The project supports using Ace of Spades voxel maps (*.vxl version 1?) (nuketown map works at least)
+The project supports using Ace of Spades voxel maps (.vxl version 1?) (nuketown map works at least)
+I decided to include both server & client in the same repo because you will need them both if you want to continue developing it.
 
 Features:
 - OK code and pretty fast
