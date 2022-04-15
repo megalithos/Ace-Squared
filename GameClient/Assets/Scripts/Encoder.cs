@@ -1,62 +1,60 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class Encoder
 {
-	static int maxLen = 255;
-	public static byte[] EncodeStringToBytes(string stringToEncode)
-	{
-		int len;
-		// allow max length of 255 strings
-		if (stringToEncode.Length > maxLen)
-		{
-			len = maxLen;
-		}
-		else
-		{
-			len = stringToEncode.Length;
-		}
+    static int maxLen = 255;
+    public static byte[] EncodeStringToBytes(string stringToEncode)
+    {
+        int len;
+        // allow max length of 255 strings
+        if (stringToEncode.Length > maxLen)
+        {
+            len = maxLen;
+        }
+        else
+        {
+            len = stringToEncode.Length;
+        }
 
-		byte[] arr = new byte[len];
-		
-		int count = 0;
-		foreach (char c in stringToEncode)
-		{
-			if (!(count < len))
-				break;
+        byte[] arr = new byte[len];
 
-			int unicode = c;
-			if (unicode < 128)
-			{
-				// it is in the ascii range, append to the byte array as normal
-				arr[count] = System.Convert.ToByte(c);
-			}
-			else
-			{
-				// not in the range, replace it with code for question mark
-				arr[count] = System.Convert.ToByte('?');
-			}
-			count++;
-		}
+        int count = 0;
+        foreach (char c in stringToEncode)
+        {
+            if (!(count < len))
+                break;
 
-		Debug.Log("returning string length of " + arr.Length);
-		return arr;
-	}
+            int unicode = c;
+            if (unicode < 128)
+            {
+                // it is in the ascii range, append to the byte array as normal
+                arr[count] = System.Convert.ToByte(c);
+            }
+            else
+            {
+                // not in the range, replace it with code for question mark
+                arr[count] = System.Convert.ToByte('?');
+            }
+            count++;
+        }
 
-	public static string DecodeByteArrayToString(byte[] arr)
-	{
-		if (arr.Length > 255)
-			throw new System.Exception("something went horribly wrong at encoder class..");
+        Debug.Log("returning string length of " + arr.Length);
+        return arr;
+    }
 
-		string myMessage = "";
+    public static string DecodeByteArrayToString(byte[] arr)
+    {
+        if (arr.Length > 255)
+            throw new System.Exception("something went horribly wrong at encoder class..");
 
-		for (int i = 0; i < arr.Length; i++)
-		{
-			myMessage += System.Convert.ToChar(arr[i]); 
-		}
+        string myMessage = "";
 
-		Debug.Log("returning myMessage: " + myMessage + " from encoder");
-		return myMessage;
-	}
+        for (int i = 0; i < arr.Length; i++)
+        {
+            myMessage += System.Convert.ToChar(arr[i]);
+        }
+
+        Debug.Log("returning myMessage: " + myMessage + " from encoder");
+        return myMessage;
+    }
 }

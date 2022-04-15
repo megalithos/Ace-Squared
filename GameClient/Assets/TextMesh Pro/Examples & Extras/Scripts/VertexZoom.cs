@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Linq;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace TMPro.Examples
@@ -130,7 +129,7 @@ namespace TMPro.Examples
 
                     // Determine the random scale change for each character.
                     float randomScale = Random.Range(1f, 1.5f);
-                    
+
                     // Add modified scale and index
                     modifiedCharScale.Add(randomScale);
                     scaleSortingOrder.Add(modifiedCharScale.Count - 1);

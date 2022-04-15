@@ -1,0 +1,26 @@
+[main]
+; maximum amount of players that can be connected to the server at once.
+max_players = 32
+
+; when player is standing on water, he is taking damage from the water this amount. if it's 0, 0 dmg will be taken.
+water_damage = 20
+
+; map that the server will use. note: the [map_name].vxl must be in the StreamingAssets/maps folder
+map = tradeoffnight
+
+; to disable or enable falling blocks
+enable_falling_blocks = false
+
+; name of the server
+server_name = myVoxelServer
+
+; message of the day
+motd = I like when it's raining.
+
+kick_for_too_many_packets = true
+
+; to disable or enable anticheat
+gandalf_anticheat_enabled = false
+
+; whether or not we want to broadcast our existence to the master server. (normally you would want to set this to true)
+broadcast_to_master = false

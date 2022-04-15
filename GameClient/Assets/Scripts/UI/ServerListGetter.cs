@@ -1,36 +1,32 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using TCP = Client.TCP;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
 
 /// <summary>
 /// Gets the serverlist from the masterserver.
 /// </summary>
 public class ServerListGetter : MonoBehaviour
 {
-	public static ServerListGetter instance;
-	[HideInInspector]
-	public TCP tcp { get; private set; }
+    public static ServerListGetter instance;
+    [HideInInspector]
+    public TCP tcp { get; private set; }
     private bool canRequestServerList = true;
     private int cooldownForRequestingServerList = 20; // seconds
 
-	void Awake()
-	{
-		if (instance == null)
-			instance = this;
-		else
-			Destroy(this);
-	}
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this);
+    }
 
-	/// <summary>
-	/// Try getting the server list from the master server.
-	/// </summary>
-	public void TryGettingServerListFromTheMaster()
-	{
+    /// <summary>
+    /// Try getting the server list from the master server.
+    /// </summary>
+    public void TryGettingServerListFromTheMaster()
+    {
         if (canRequestServerList)
         {
             canRequestServerList = false;

@@ -1,27 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
-using System;
-using System.Threading;
+using UnityEngine;
 
 public class Client : MonoBehaviour
 {
     public static Client instance;
     public static int dataBufferSize = 4096;
 
-	[HideInInspector]
+    [HideInInspector]
     public string ip = "";
-	[HideInInspector]
+    [HideInInspector]
     public int port = 26950;
-	[HideInInspector]
+    [HideInInspector]
     public int myId = 0;
     public TCP tcp;
-	public UDP udp;
-	[HideInInspector]
-	public string username = "";
-	public int connectTime = 5; // time in seconds to try and connect to server. if not connected to the server during this period of time, abort the socket etc.
+    public UDP udp;
+    [HideInInspector]
+    public string username = "";
+    public int connectTime = 5; // time in seconds to try and connect to server. if not connected to the server during this period of time, abort the socket etc.
     public bool isAdmin { get; set; } = false;
     public int firstClassID;
 
@@ -44,13 +43,13 @@ public class Client : MonoBehaviour
 
     private void Start()
     {
-        
-	}
 
-	public string GetIP()
-	{
-		return ip;
-	}
+    }
+
+    public string GetIP()
+    {
+        return ip;
+    }
 
     private void OnApplicationQuit()
     {
@@ -67,9 +66,9 @@ public class Client : MonoBehaviour
         username = name;
 
         tcp = new TCP(ip, port); // <- this ip will tell which ip we try to connect to
-		udp = new UDP();
-		UIManager.instance.loadingText.text = "Connecting to the server...";
-		tcp.Connect(); // Connect tcp, udp gets connected once tcp is done
+        udp = new UDP();
+        UIManager.instance.loadingText.text = "Connecting to the server...";
+        tcp.Connect(); // Connect tcp, udp gets connected once tcp is done
         ChatManager.instance.Clear();
         // start timer
         StartCoroutine(CheckIfReceivedCallbackFromGameServer());
@@ -85,28 +84,28 @@ public class Client : MonoBehaviour
         }
     }
 
-	public class TCP
+    public class TCP
     {
         public TcpClient socket;
 
         private NetworkStream stream;
         private Packet receivedData;
         private byte[] receiveBuffer;
-		private string ip;
-		private int port;
-		private bool masterServerConnection;
-		[HideInInspector]
-		public bool isConnectedToMaster { get; private set; } = false;
+        private string ip;
+        private int port;
+        private bool masterServerConnection;
+        [HideInInspector]
+        public bool isConnectedToMaster { get; private set; } = false;
 
-		// constructor
-		public TCP (string _ip, int _port, bool _masterServerConnection = false)
-		{
-			ip = _ip;
-			port = _port;
-			masterServerConnection = _masterServerConnection;
+        // constructor
+        public TCP(string _ip, int _port, bool _masterServerConnection = false)
+        {
+            ip = _ip;
+            port = _port;
+            masterServerConnection = _masterServerConnection;
 
-			Debug.Log($"Trying to establish  server connection... {ip}:{port}");
-		}
+            Debug.Log($"Trying to establish  server connection... {ip}:{port}");
+        }
 
         /// <summary>Attempts to connect to the server via TCP.</summary>
         public void Connect()
@@ -124,19 +123,19 @@ public class Client : MonoBehaviour
         /// <summary>Initializes the newly connected client's TCP-related info.</summary>
         private void ConnectCallback(IAsyncResult _result)
         {
-			if (!masterServerConnection)
-			{
-				isConnected = true;
-				Debug.Log($"Connected to the game server {isConnected}");
-			}
-			else
-			{
-				Debug.Log("This is master server connection");
-				isConnectedToMaster = true;
-			}
-			Debug.Log($"Connected to {((IPEndPoint)socket.Client.RemoteEndPoint).Address.ToString()}, isMasterConnection={masterServerConnection}");
+            if (!masterServerConnection)
+            {
+                isConnected = true;
+                Debug.Log($"Connected to the game server {isConnected}");
+            }
+            else
+            {
+                Debug.Log("This is master server connection");
+                isConnectedToMaster = true;
+            }
+            Debug.Log($"Connected to {((IPEndPoint)socket.Client.RemoteEndPoint).Address.ToString()}, isMasterConnection={masterServerConnection}");
 
-			socket.EndConnect(_result);
+            socket.EndConnect(_result);
             if (!socket.Connected)
             {
                 return;
@@ -147,7 +146,7 @@ public class Client : MonoBehaviour
             receivedData = new Packet();
 
             stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
-		}
+        }
 
         /// <summary>Sends data to the client via TCP.</summary>
         /// <param name="_packet">The packet to send.</param>
@@ -348,7 +347,7 @@ public class Client : MonoBehaviour
         /// <summary>Disconnects from the server and cleans up the UDP connection.</summary>
         public void Disconnect()
         {
-            if (socket!=null)socket.Close();
+            if (socket != null) socket.Close();
             endPoint = null;
             socket = null;
         }
@@ -366,23 +365,23 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.playerDisconnected, ClientHandle.PlayerDisconnected },
             { (int)ServerPackets.playerHealth, ClientHandle.PlayerHealth },
             { (int)ServerPackets.playerRespawned, ClientHandle.PlayerRespawned },
-			{ (int)ServerPackets.blockUpdated, ClientHandle.BlockUpdated },
-			{ (int)ServerPackets.simulationState, ClientHandle.SimulationState },
-			{ (int)ServerPackets.playerMuzzleFlash, ClientHandle.PlayerMuzzleFlash },
-			{ (int)ServerPackets.playerSelectedItemChange, ClientHandle.PlayerSelectedItemChange },
-			{ (int)ServerPackets.chunkOfUpdatedBlocksForNewlyJoinedPlayer, ClientHandle.ChunkOfUpdatedBlocksForNewlyJoinedPlayer },
-			{ (int)ServerPackets.ammoSimulation, ClientHandle.AmmoSimulation },
-			{ (int)ServerPackets.killfeedUpdate, ClientHandle.KillfeedUpdate },
-			{ (int)ServerPackets.playerChatMessage, ClientHandle.PlayerChatMessage },
-			{ (int)ServerPackets.playerTeamChangeAcknowledgement, ClientHandle.PlayerTeamChangeAcknowledgement },
-			{ (int)ServerPackets.playerAnimationTrigger, ClientHandle.PlayerAnimationTrigger },
-			{ (int)ServerPackets.mapNameUsedByServer, ClientHandle.MapNameUsedByServer },
-			{ (int)ServerPackets.mapSend, ClientHandle.MapSend },
-			{ (int)ServerPackets.mapHashUsedByServer, ClientHandle.MapHashUsedByServer },
-			{ (int)ServerPackets.serverMessage, ClientHandle.ServerMessage },
+            { (int)ServerPackets.blockUpdated, ClientHandle.BlockUpdated },
+            { (int)ServerPackets.simulationState, ClientHandle.SimulationState },
+            { (int)ServerPackets.playerMuzzleFlash, ClientHandle.PlayerMuzzleFlash },
+            { (int)ServerPackets.playerSelectedItemChange, ClientHandle.PlayerSelectedItemChange },
+            { (int)ServerPackets.chunkOfUpdatedBlocksForNewlyJoinedPlayer, ClientHandle.ChunkOfUpdatedBlocksForNewlyJoinedPlayer },
+            { (int)ServerPackets.ammoSimulation, ClientHandle.AmmoSimulation },
+            { (int)ServerPackets.killfeedUpdate, ClientHandle.KillfeedUpdate },
+            { (int)ServerPackets.playerChatMessage, ClientHandle.PlayerChatMessage },
+            { (int)ServerPackets.playerTeamChangeAcknowledgement, ClientHandle.PlayerTeamChangeAcknowledgement },
+            { (int)ServerPackets.playerAnimationTrigger, ClientHandle.PlayerAnimationTrigger },
+            { (int)ServerPackets.mapNameUsedByServer, ClientHandle.MapNameUsedByServer },
+            { (int)ServerPackets.mapSend, ClientHandle.MapSend },
+            { (int)ServerPackets.mapHashUsedByServer, ClientHandle.MapHashUsedByServer },
+            { (int)ServerPackets.serverMessage, ClientHandle.ServerMessage },
             { (int)ServerPackets.pingMessageAck, ClientHandle.PingMessageAck },
             { (int)ServerPackets.disconnectReason, ClientHandle.DisconnectReason },
-		};
+        };
         Debug.Log("Initialized packets.");
     }
 

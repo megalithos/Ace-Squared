@@ -12,17 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 4
+  version: 5
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Explosion
   m_Shader: {fileID: 4800000, guid: 0406db5a14f94604a8c57ccfbc9f3b46, type: 3}
-  m_ShaderKeywords: _EMISSION _FADING_ON _FLIPBOOKBLENDING_ON _SOFTPARTICLES_ON
+  m_ValidKeywords:
+  - _EMISSION
+  - _FADING_ON
+  - _FLIPBOOKBLENDING_ON
+  - _SOFTPARTICLES_ON
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -32,6 +38,7 @@ Material:
   disabledShaderPasses:
   - ALWAYS
   - SHADOWCASTER
+  - DepthOnly
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -83,6 +90,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: 595a5c1164fec844f8e6b477620221f6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
@@ -127,7 +135,7 @@ Material:
     - _BaseColor: {r: 47.937256, g: 29.113726, b: 14.305882, a: 1}
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 47.937256, g: 29.113726, b: 14.305882, a: 1}
+    - _Color: {r: 47.937267, g: 29.113731, b: 14.305884, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 23.96349, g: 2.7167206, b: 0.020842025, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0.5, b: 0, a: 0}

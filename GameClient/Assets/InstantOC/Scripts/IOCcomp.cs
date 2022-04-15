@@ -1,8 +1,8 @@
 using UnityEngine;
-using System.Collections;
 
-public abstract class IOCcomp : MonoBehaviour {
+public abstract class IOCcomp : MonoBehaviour
+{
 
-	public abstract void UnHide(RaycastHit hit);
-	public abstract void Init();
+    public abstract void UnHide(RaycastHit hit);
+    public abstract void Init();
 }

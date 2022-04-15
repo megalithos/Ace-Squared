@@ -2,17 +2,17 @@
 
 public class Killfeed : MonoBehaviour
 {
-	[SerializeField]
-	GameObject killfeeItemPrefab;
+    [SerializeField]
+    GameObject killfeeItemPrefab;
     public static Killfeed instance;
 
-	private void Awake()
-	{
+    private void Awake()
+    {
         if (instance == null)
             instance = this;
         else Destroy(this);
-		GameManager.instance.OnPlayerKilled_ += OnKillfeedUpdateReceived;
-	}
+        GameManager.instance.OnPlayerKilled_ += OnKillfeedUpdateReceived;
+    }
 
     private void OnEnable()
     {
@@ -20,10 +20,10 @@ public class Killfeed : MonoBehaviour
     }
 
     void OnKillfeedUpdateReceived(int killerID, int weaponID, bool killedByHeadshot, int killedID)
-	{
-		GameObject obj = Instantiate(killfeeItemPrefab, this.transform);
-		obj.GetComponent<KillfeedItem>().Setup(GameManager.players[killerID].username, weaponID, killedByHeadshot, GameManager.players[killedID].username);
-	}
+    {
+        GameObject obj = Instantiate(killfeeItemPrefab, this.transform);
+        obj.GetComponent<KillfeedItem>().Setup(GameManager.players[killerID].username, weaponID, killedByHeadshot, GameManager.players[killedID].username);
+    }
 
     public void Clear()
     {
