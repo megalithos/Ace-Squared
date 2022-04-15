@@ -1,5 +1,5 @@
 # Ace-Squared
-Multiplayer FPS with voxels. (like minecraft with guns)
+Multiplayer FPS with voxels (like minecraft with guns) made with Unity & C#
 Unity implementation of a game called "Ace of Spades".
 Coded by me except for some included libraries such as Newtonsoft JSON and Tom Weiland's basic client<->server code.
 
