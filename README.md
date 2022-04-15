@@ -12,6 +12,8 @@ Features:
 - basic lag compensation
 - destructible/editable environment
 - fall damage, shooting physics, health calculated on the server
+- chat, killfeed, scoreboard
+- basic admin moderation commands such as ban
 
 This project has been tested with 10 concurrent players and it ran fine (mono build on a linux server).
 
