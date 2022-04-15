@@ -12,7 +12,7 @@ Features:
 - basic lag compensation
 - destructible/editable environment
 
-This project has been tested with 10 concurrent players and it ran fine.
+This project has been tested with 10 concurrent players and it ran fine (mono build on a linux server).
 
 Here is a demo video:
 https://youtu.be/pufQu9REhOo
