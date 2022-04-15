@@ -8,6 +8,7 @@ If the codebase is helpful for you, please consider donating: https://www.paypal
 
 # Info
 See LICENSE files (files in root directory starting with LICENSE prefix).
+Originally made with unity 2020.2.3f1
 
 In project there is the client code and dedicated server code. This project was made with older version of Unity but if you know C# you should be able to setup it pretty quickly. There is some not clean code in the repository, I might clean it later.
 
