@@ -11,6 +11,7 @@ Features:
 - OK code and pretty fast
 - basic lag compensation
 - destructible/editable environment
+- fall damage, shooting physics, health calculated on the server
 
 This project has been tested with 10 concurrent players and it ran fine (mono build on a linux server).
 
