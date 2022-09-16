@@ -4,7 +4,7 @@ Unity implementation of a game called "Ace of Spades".
 Coded by me except for some included libraries such as Newtonsoft JSON and Tom Weiland's basic client<->server code.
 
 # Donate
-If the codebase is helpful for you, please consider donating: https://www.paypal.me/ambroosc
+If the codebase is helpful for you, please consider donating. If you wish to donate please email me.
 
 # Info
 See LICENSE files (files in root directory starting with LICENSE prefix).
